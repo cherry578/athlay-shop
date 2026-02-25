@@ -12,6 +12,14 @@
             box-sizing: border-box;
         }
 
+        /* Keep numeric/price elements always LTR regardless of page direction */
+        #dinar-price,
+        #euro-price,
+        .result-price {
+            direction: ltr;
+            unicode-bidi: embed;
+        }
+
         :root {
             --pink-50: #fff5fb;
             --pink-100: #ffe5f4;
@@ -1186,6 +1194,7 @@ const translations = {
         // Calculate and display result
         const finalPrice = calculatePrice(euroValue);
         dinarPrice.textContent = formatNumber(finalPrice) + ' DZD';
+        dinarPrice.setAttribute('dir', 'ltr');
         
         // Show result with elegant animation
         resultDiv.classList.add('show');
